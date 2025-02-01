@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import { EmptyState } from "../(site)/components/EmptyState";
 import clsx from "clsx";
+import { EmptyState } from "../(site)/components/EmptyState";
 
 export default function Users() {
   return (

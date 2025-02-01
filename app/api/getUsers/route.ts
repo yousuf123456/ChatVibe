@@ -1,6 +1,6 @@
 import { api } from "@/convex/_generated/api";
-import { auth, clerkClient, currentUser } from "@clerk/nextjs/server";
 import { ConvexClient } from "convex/browser";
+import { clerkClient, currentUser } from "@clerk/nextjs/server";
 
 import { NextResponse } from "next/server";
 

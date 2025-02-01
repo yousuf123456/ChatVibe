@@ -1,8 +1,8 @@
 import { Skeleton } from "@/components/ui/skeleton";
 import React from "react";
-import { SkeletonDP } from "./components/SkeletonDP";
-import { SkeletonContainer } from "./components/SkeletonContainer";
-import { SkeletonMessage } from "./components/SkeletonMessage";
+import { SkeletonDP } from "./_components/SkeletonDP";
+import { SkeletonContainer } from "./_components/SkeletonContainer";
+import { SkeletonMessage } from "./_components/SkeletonMessage";
 
 export default function Loading() {
   return (

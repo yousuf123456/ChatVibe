@@ -1,33 +1,20 @@
 import React from "react";
-import { ConversationList } from "./components/ConversationList";
 
-import { currentUser } from "@clerk/nextjs/server";
-import { Presence } from "../context/Presence";
-import { PageLoading } from "../components/PageLoading";
+import { Presence } from "../_context/Presence";
+import { ConversationSidebar } from "./_components/conversations_sidebar/ConversationSidebar";
 
 export default async function conversationsLayout({
+  params,
   children,
 }: {
   children: React.ReactNode;
+  params: { conversationId: string };
 }) {
-  const user = await currentUser();
-
-  if (!user) {
-    return "Unauthorized";
-  }
-
   return (
     <Presence>
       <div className="w-full h-full">
         <div className="h-full">
-          <ConversationList
-            currentUser={{
-              name: user.username || user.firstName || user.lastName,
-              emailAddress: user.emailAddresses[0]!.emailAddress,
-              id: user.id,
-              imageUrl: user.imageUrl,
-            }}
-          />
+          <ConversationSidebar conversationId={params.conversationId} />
           {children}
         </div>
       </div>
