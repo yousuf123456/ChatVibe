@@ -15,6 +15,7 @@ export const useHeartbeat = (
     const intervalId = setInterval(() => {
       void heartbeat({ user });
     }, heartbeatPeriod);
+
     // Whenever we have any data change, it will get cleared.
     return () => clearInterval(intervalId);
   }, [heartbeat, user, heartbeatPeriod]);

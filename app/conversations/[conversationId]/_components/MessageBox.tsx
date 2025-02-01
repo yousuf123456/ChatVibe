@@ -8,14 +8,14 @@ import Image from "next/image";
 import { format } from "date-fns";
 import { Doc } from "@/convex/_generated/dataModel";
 import { useUser } from "@clerk/nextjs";
-import { User } from "@clerk/nextjs/dist/types/server";
+import { ConversationUser } from "@/app/_types";
 
 interface MessageBoxProps {
-  sender: User;
   isLast: boolean;
   isGroup?: boolean;
   iAmSender: boolean;
   message: Doc<"messages">;
+  sender: ConversationUser;
   seenUsersNamesList: string;
 }
 

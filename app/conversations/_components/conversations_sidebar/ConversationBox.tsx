@@ -1,23 +1,26 @@
-import { Avatar } from "@/app/conversations/_components/Avatar";
-import React, { useCallback, useMemo, useState, useEffect } from "react";
+import React, { useCallback, useMemo } from "react";
+import { useRouter } from "next/navigation";
 
 import clsx from "clsx";
-import { notFound, useRouter } from "next/navigation";
-import { GroupAvatar } from "@/app/conversations/_components/GroupAvatar";
 import { format } from "date-fns";
-import { cn } from "@/lib/utils";
-import { Doc } from "@/convex/_generated/dataModel";
+
+import { useUser } from "@clerk/nextjs";
+
 import { usePaginatedQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
-import { User } from "@clerk/nextjs/dist/types/server";
-import { useUser } from "@clerk/nextjs";
+
+import { cn } from "@/lib/utils";
+
+import { Avatar } from "@/app/conversations/_components/Avatar";
+import { GroupAvatar } from "@/app/conversations/_components/GroupAvatar";
+
+import { FullConversationType } from "@/app/_types";
+import { useUsersList } from "@/app/_hooks/useUsersList";
 import { ConversationBoxLoading } from "./ConversationBoxLoading";
-import axios from "axios";
-import { useConversationUsers } from "@/app/_hooks/useConversationUsers";
 
 interface conversationBoxProps {
   selected: boolean;
-  conversation: Doc<"conversations">;
+  conversation: FullConversationType;
 }
 
 export const ConversationBox: React.FC<conversationBoxProps> = ({
@@ -26,8 +29,8 @@ export const ConversationBox: React.FC<conversationBoxProps> = ({
 }) => {
   const router = useRouter();
 
-  const { convUsers, isLoaded: isConvUsersLoaded } = useConversationUsers(
-    conversation._id
+  const { users: convUsers, isLoaded: isConvUsersLoaded } = useUsersList(
+    conversation.userIds
   );
 
   // Retrieve the last few messages to show the last message in the conversation box
@@ -106,15 +109,15 @@ export const ConversationBox: React.FC<conversationBoxProps> = ({
     router.push(`/conversations/${conversation._id}`);
   }, [router, conversation._id]);
 
-  if (!isConvUsersLoaded || !messages) {
+  if (!messages || !isConvUsersLoaded) {
     return <ConversationBoxLoading />;
   }
 
-  if (convUsers.length === 0)
+  if (!convUsers || (convUsers && convUsers.length === 0))
     return (
       <p>
-        "No other user realted to this conversation. It seems to be a one sided
-        conversation."
+        No other user realted to this conversation. It seems to be a one sided
+        conversation.
       </p>
     );
 
@@ -128,12 +131,12 @@ export const ConversationBox: React.FC<conversationBoxProps> = ({
     >
       {conversation.isGroup ? (
         <div className="relative w-14 h-14 rounded-full overflow-hidden">
-          <GroupAvatar users={convUsers || []} size="h-5 w-5" />
+          <GroupAvatar users={convUsers} size="h-5 w-5" />
         </div>
       ) : (
         <div className="relative w-10 h-10">
           <div className="relative w-10 h-10 rounded-full overflow-hidden">
-            <Avatar image={convUsers[0]?.imageUrl} />
+            <Avatar image={convUsers[0].imageUrl} />
           </div>
         </div>
       )}

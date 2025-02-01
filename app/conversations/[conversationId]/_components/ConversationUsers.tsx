@@ -8,9 +8,10 @@ import { Doc } from "@/convex/_generated/dataModel";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { PresenceData } from "@/app/_hooks/usePresence";
+import { ConversationUser } from "@/app/_types";
 
 interface ConversationUserProps {
-  convUsers: User[];
+  convUsers: ConversationUser[];
   conversation: Doc<"conversations">;
   othersPresence:
     | PresenceData<{

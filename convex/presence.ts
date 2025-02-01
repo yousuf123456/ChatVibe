@@ -73,6 +73,7 @@ export const heartbeat = mutation({
       .query("presence_heartbeats")
       .withIndex("by_user", (q) => q.eq("user", user))
       .unique();
+
     if (existing) {
       await ctx.db.patch(existing._id, { updated: Date.now() });
     } else {

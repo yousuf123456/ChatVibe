@@ -1,28 +1,28 @@
 import { useEffect, useState } from "react";
+
+import { clerkClient } from "@clerk/nextjs/server";
 import { User } from "@clerk/nextjs/dist/types/server";
 
 import axios from "axios";
 
-export const useConversationUsers = (
-  conversationId: string
-):
-  | { convUsers: User[]; isLoaded: true }
-  | { convUsers: undefined; isLoaded: false } => {
+export const useUsersList = (
+  userId: string[]
+): { users: User[] | undefined; isLoaded: boolean } => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [convUsers, setConvUsers] = useState<User[] | undefined>();
+  const [users, setUsers] = useState<User[] | undefined>();
 
   // Get the users connected to this conversation from the users database
   useEffect(() => {
     axios
       .post("/api/getUsers", {
-        conversationId,
+        userId,
       })
       .then((res) => {
         setIsLoaded(true);
-        setConvUsers(res.data);
+        setUsers(res.data);
       })
       .catch((e) => console.log(e));
   }, []);
 
-  return { convUsers, isLoaded } as any;
+  return { users, isLoaded };
 };
