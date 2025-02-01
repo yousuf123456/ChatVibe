@@ -1,6 +1,13 @@
+import { User } from "@clerk/nextjs/dist/types/server";
+
 import { query } from "./_generated/server";
+import { Doc, Id } from "./_generated/dataModel";
 import { getAllOrThrow } from "convex-helpers/server/relationships";
-import { Id } from "./_generated/dataModel";
+
+export type FullConversationType = Doc<"conversations"> & {
+  convUsers?: User[];
+  messages?: Doc<"messages">[];
+};
 
 export const get = query({
   handler: async (ctx, args) => {
@@ -13,13 +20,14 @@ export const get = query({
     const conversationIds = (
       await ctx.db
         .query("userConversationRelation")
-        .filter((q) => q.eq(q.field("userId"), identity?.subject))
+        .filter((q) => q.eq(q.field("userId"), identity.subject))
         .collect()
     ).map(
       (userConversationRel) => userConversationRel.conversationId
     ) as Id<"conversations">[];
 
-    const conversations = await getAllOrThrow(ctx.db, conversationIds);
+    let conversations: FullConversationType[] = [];
+    conversations = await getAllOrThrow(ctx.db, conversationIds);
 
     return conversations;
   },

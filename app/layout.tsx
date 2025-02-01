@@ -1,9 +1,13 @@
 import "./globals.css";
 
-import { ClerkContext } from "./context/ClerkContext";
-import { ToasterContext } from "./context/ToasterContext";
-import { Poppins, Nunito, Roboto } from "next/font/google";
 import { StrictMode } from "react";
+import { Providers } from "@/components/Providers";
+import { Poppins, Nunito, Roboto, Inter } from "next/font/google";
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: "variable",
+});
 
 const nunito = Nunito({
   subsets: ["latin"],
@@ -35,17 +39,14 @@ export default function RootLayout({
 }) {
   return (
     <StrictMode>
-
-    <html
-      lang="en"
-      className={`${poppins.variable} ${nunito.variable} ${roboto.variable}`}
-    >
-      <body className="h-screen">
-        <ToasterContext />
-       
-        <ClerkContext>{children}</ClerkContext>
-      </body>
-    </html>
+      <html
+        lang="en"
+        className={`${poppins.variable} ${nunito.variable} ${roboto.variable} ${inter.className}`}
+      >
+        <body className="h-screen">
+          <Providers>{children}</Providers>
+        </body>
+      </html>
     </StrictMode>
   );
 }
