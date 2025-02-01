@@ -136,6 +136,7 @@ export const remove = mutation({
         .filter((q) => q.eq(q.field("conversationId"), conversationId))
         .collect()
     ).map((relation) => relation._id);
+
     const conversationMessageIds = (
       await ctx.db
         .query("messages")
@@ -154,6 +155,41 @@ export const remove = mutation({
     await Promise.all([...relationsDeletePromises, ...messagesDeletePromises]);
 
     return "Deleted the conversation";
+  },
+});
+
+export const leave = mutation({
+  args: {
+    conversationId: v.id("conversations"),
+    updatedUserIds: v.array(v.string()),
+  },
+  handler: async (ctx, args) => {
+    const { conversationId, updatedUserIds } = args;
+    const identity = await ctx.auth.getUserIdentity();
+
+    if (!identity) throw new Error("Unauthorized");
+
+    if (updatedUserIds.length < 2)
+      throw new Error("There must be atleast two users in a conversation");
+
+    const userConversationRelation = await ctx.db
+      .query("userConversationRelation")
+      .filter((q) =>
+        q.and(
+          q.eq(q.field("conversationId"), conversationId),
+          q.eq(q.field("userId"), identity.subject)
+        )
+      )
+      .unique();
+
+    if (!userConversationRelation) throw new Error("Invalid Data");
+
+    await Promise.all([
+      ctx.db.patch(conversationId, { userIds: updatedUserIds }),
+      ctx.db.delete(userConversationRelation._id),
+    ]);
+
+    return "Left the conversation succesfully";
   },
 });
 

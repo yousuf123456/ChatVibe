@@ -5,15 +5,14 @@ import toast from "react-hot-toast";
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 
-import { User } from "@clerk/nextjs/dist/types/server";
-
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 
 import { Avatar } from "@/app/conversations/_components/Avatar";
+import { ConversationUser } from "@/app/_types";
 
 interface MemberBoxProps {
-  user: User;
+  user: ConversationUser;
 }
 
 export const MemberBox: React.FC<MemberBoxProps> = ({ user }) => {

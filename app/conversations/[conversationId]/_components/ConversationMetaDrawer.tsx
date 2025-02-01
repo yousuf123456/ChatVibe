@@ -34,22 +34,27 @@ import { User } from "@clerk/nextjs/dist/types/server";
 
 import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
+import { ConversationUser } from "@/app/_types";
+import { useAuth } from "@clerk/nextjs";
 
 interface ConversationMetaDrawerProps {
   conversation: Doc<"conversations">;
-  convUsers: User[];
+  convUsers: ConversationUser[];
 }
 
 export const ConversationMetaDrawer: React.FC<ConversationMetaDrawerProps> = ({
   conversation,
   convUsers,
 }) => {
+  const { userId } = useAuth();
+
   const [isLoading, setIsLoading] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
 
   const otherUser = convUsers[0];
 
   const remove = useMutation(api.conversation.remove);
+  const leave = useMutation(api.conversation.leave);
 
   const router = useRouter();
 
@@ -64,6 +69,25 @@ export const ConversationMetaDrawer: React.FC<ConversationMetaDrawerProps> = ({
       .catch((e) => toast.error("Something went wrong."))
       .finally(() => setIsLoading(false));
   };
+
+  const onLeave = () => {
+    if (!userId) return;
+
+    setIsLoading(true);
+
+    leave({
+      conversationId: conversation._id,
+      updatedUserIds: conversation.userIds.filter((uId) => uId !== userId), // Exclude the current userId from convoUserIds
+    })
+      .then((res) => {
+        toast.success(res);
+        router.push("/conversations");
+      })
+      .catch((e) => toast.error("Something went wrong."))
+      .finally(() => setIsLoading(false));
+  };
+
+  const isMoreThanTwoUsers = conversation.userIds.length > 2;
 
   return (
     <Sheet>
@@ -108,7 +132,7 @@ export const ConversationMetaDrawer: React.FC<ConversationMetaDrawerProps> = ({
               <div className="pl-2 flex flex-col">
                 <p className="text-sm font-light text-zinc-500">Email</p>
                 <p className="text-sm sm:text-base font-nunito font-medium text-black">
-                  {otherUser.emailAddresses[0]?.emailAddress}
+                  {otherUser.emailAddress}
                 </p>
               </div>
 
@@ -146,16 +170,21 @@ export const ConversationMetaDrawer: React.FC<ConversationMetaDrawerProps> = ({
         <div className="mt-12 flex w-full justify-end px-2">
           <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
             <DialogTrigger>
-              <Button variant={"destructive"}>Delete</Button>
+              <Button variant={"destructive"}>
+                {isMoreThanTwoUsers ? "Leave" : "Delete"}
+              </Button>
             </DialogTrigger>
 
             <DialogContent>
               <DialogHeader>
-                <DialogTitle>Delete Conversation</DialogTitle>
+                <DialogTitle>
+                  {isMoreThanTwoUsers ? "Leave" : "Delete"} Conversation
+                </DialogTitle>
                 <DialogDescription>
                   This action cannot be undone! This will completely remove
-                  your&apos;s conversation with this user. Do you want to delete
-                  this user ?
+                  your&apos;s conversation. Do you want to{" "}
+                  {isMoreThanTwoUsers ? "leave " : "delete "}
+                  this conversation ?
                 </DialogDescription>
               </DialogHeader>
 
@@ -164,14 +193,31 @@ export const ConversationMetaDrawer: React.FC<ConversationMetaDrawerProps> = ({
                   <Button variant={"ghost"}>Cancel</Button>
                 </DialogClose>
 
-                <Button
-                  onClick={onDelete}
-                  disabled={isLoading}
-                  variant={"destructive"}
-                >
-                  Delete
-                  {isLoading && <Loader2 className="w-4 h-4 animate-spin" />}
-                </Button>
+                {/* When the conversation is between only two users, 
+                give users the option to delete the convo */}
+                {conversation.userIds.length < 3 && (
+                  <Button
+                    onClick={onDelete}
+                    disabled={isLoading}
+                    variant={"destructive"}
+                  >
+                    Delete
+                    {isLoading && <Loader2 className="w-4 h-4 animate-spin" />}
+                  </Button>
+                )}
+
+                {/* When the conversation is between more than two users, 
+                give users the option to leave the convo */}
+                {conversation.userIds.length > 2 && (
+                  <Button
+                    onClick={onLeave}
+                    disabled={isLoading}
+                    variant={"destructive"}
+                  >
+                    Leave
+                    {isLoading && <Loader2 className="w-4 h-4 animate-spin" />}
+                  </Button>
+                )}
               </DialogFooter>
             </DialogContent>
           </Dialog>

@@ -1,16 +1,21 @@
 "use client";
 import React, { useState } from "react";
+import { useParams } from "next/navigation";
+
 import clsx from "clsx";
+
+import { useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
+
 import { AddUserModel } from "./AddUserModel";
 import { CreateGroupModel } from "./CreateGroupModel";
 import { ConversationBox } from "./ConversationBox";
-import { useParams } from "next/navigation";
+import { Loader2 } from "lucide-react";
+import { ConversationBoxLoading } from "./ConversationBoxLoading";
 
-export const ConversationsList = ({
-  conversations,
-}: {
-  conversations: any[];
-}) => {
+export const ConversationsList = () => {
+  const conversations = useQuery(api.conversations.get, {});
+
   const params = useParams();
   const conversationId = params.conversationId;
 
@@ -47,36 +52,25 @@ export const ConversationsList = ({
       </div>
 
       <div className="mt-8 flex flex-col gap-0">
-        {conversations.map((conversation) => {
-          if (conversation.isGroup === isGroup) {
-            return (
+        {conversations ? (
+          conversations.map((conversation) => (
+            <div
+              key={conversation._id}
+              className={clsx(isGroup === conversation.isGroup ? "" : "hidden")}
+            >
               <ConversationBox
-                key={conversation._id}
                 conversation={conversation}
                 selected={conversationId === conversation._id}
               />
-            );
-          }
-        })}
-        {/* {conversations ? (
-          conversations.map((conversation) => {
-            if (conversation.isGroup === isGroup) {
-              return (
-                <ConversationBox
-                  key={conversation._id}
-                  conversation={conversation}
-                  selected={conversationId === conversation._id}
-                />
-              );
-            }
-          })
+            </div>
+          ))
         ) : (
-          <div className="mt-4 w-full flex justify-center items-center flex-col gap-2">
-            <Loader2 className="w-6 h-6 animate-spin text-zinc-500" />
-
-            <p className="text-zinc-600">Loading Chats</p>
-          </div>
-        )} */}
+          <>
+            <ConversationBoxLoading />
+            <ConversationBoxLoading />
+            <ConversationBoxLoading />
+          </>
+        )}
       </div>
     </div>
   );

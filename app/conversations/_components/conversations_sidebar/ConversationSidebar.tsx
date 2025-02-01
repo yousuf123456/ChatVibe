@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { Suspense } from "react";
 
 import Image from "next/image";
 import clsx from "clsx";
@@ -8,27 +9,20 @@ import { SignOutButton } from "@clerk/nextjs";
 import { LogOut } from "lucide-react";
 
 import { UserProfileDrawer } from "./UserProfileDrawer";
-import { Conversations } from "./Conversations";
+import useConversation from "@/app/_hooks/useConversation";
+import { ConversationsList } from "./ConversationsList";
+import { useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
 
-export const ConversationSidebar = ({
-  conversationId,
-}: {
-  conversationId: string;
-}) => {
-  // Stores the state whether the conversations currently showing are group chats or not
-  // const [isGroup, setIsgroup] = useState<boolean>(false);
+export const ConversationSidebar = () => {
+  const { isOpen } = useConversation();
 
-  // const { conversationId, isOpen } = useConversation();
-
-  // const conversations = useQuery(api.conversations.get, {});
-
-  console.log(conversationId);
   return (
     <>
       <div
         className={clsx(
           "fixed w-full h-full mb-20 z-50 lg:mb-0 lg:w-80 lg:h-full lg:overflow-y-auto lg:flex flex-col border-slate-200 bg-white",
-          conversationId ? "hidden" : "flex"
+          isOpen ? "hidden" : "flex"
         )}
       >
         <div className="w-full border-slate-200">
@@ -50,7 +44,7 @@ export const ConversationSidebar = ({
           </div>
         </div>
 
-        <Conversations />
+        <ConversationsList />
 
         {/* Shown in desktop devices only on the bottom */}
         <div className="fixed hidden lg:block bottom-0 left-0 w-80 px-3 py-1.5 border-t-[1px] border-slate-200 z-[51]">

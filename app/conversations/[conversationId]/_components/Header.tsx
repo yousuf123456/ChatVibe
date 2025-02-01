@@ -9,11 +9,11 @@ import { ConversationUsers } from "./ConversationUsers";
 
 import { Doc } from "@/convex/_generated/dataModel";
 import { PresenceData } from "@/app/_hooks/usePresence";
-import { User } from "@clerk/nextjs/dist/types/server";
 import { ConversationMetaDrawer } from "./ConversationMetaDrawer";
+import { ConversationUser } from "@/app/_types";
 
 interface HeaderProps {
-  convUsers: User[];
+  convUsers: ConversationUser[];
   conversation: Doc<"conversations">;
   othersPresence:
     | PresenceData<{

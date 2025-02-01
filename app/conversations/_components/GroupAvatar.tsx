@@ -2,6 +2,7 @@ import React from "react";
 
 import clsx from "clsx";
 import { Avatar } from "./Avatar";
+
 import { User } from "@clerk/nextjs/dist/types/server";
 
 type Props = {

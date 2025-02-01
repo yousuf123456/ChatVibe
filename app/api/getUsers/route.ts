@@ -8,21 +8,17 @@ const convex = new ConvexClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
 
 export async function POST(request: Request) {
   try {
-    const { conversationId, userId } = await request.json();
+    // An array of userIds to get users
+    const { userId } = await request.json();
 
     const user = await currentUser();
 
-    if (!user && !userId) {
+    if (!user) {
       return new NextResponse("Unauthorized", { status: 403 });
     }
 
-    const userIds = await convex.query(api.conversation.getOtherUserIds, {
-      conversationId,
-      currentUserId: user?.id || userId,
-    });
-
     const users = await clerkClient.users.getUserList({
-      userId: userIds,
+      userId,
     });
 
     return NextResponse.json(users.data);
