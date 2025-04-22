@@ -52,7 +52,7 @@ export const ConversationSidebar = () => {
             <UserProfileDrawer />
 
             <SignOutButton>
-              <LogOut className="w-6 h-6 text-gray-700" />
+              <LogOut className="w-6 h-6 text-gray-700 cursor-pointer" />
             </SignOutButton>
           </div>
         </div>
