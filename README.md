@@ -47,7 +47,7 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
-        <li><a href="#built-with">Built With</a></li>
+        <li><a href="#built-with">Technologies Used</a></li>
       </ul>
     </li>
     <li>
@@ -62,7 +62,6 @@
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -71,7 +70,7 @@
 ## About The Project
 [![Project Name Screen Shot][project-screenshot]](https://example.com)
 
-**ChatVibe** is a real-time chat application designed for seamless communication.
+Initially when I was learning about web development, I wondered that how chat systems databases are structured, thats where I decided to create **ChatVibe**. It is a real-time chat application designed for seamless communication.
 
 - Users can get started by signing in to the app.
 - Connect with others by searching for their ID or email address.
@@ -84,15 +83,34 @@ These features keep conversations interactive and engaging.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Built With
+## Technologies Used
 
-- [![Next][Next.js]][Next-url]<br/>-Implemented Next.js for SSR, routing, and performance optimization of the React-based web app.
-- [![React][React.js]][React-url]<br/>-Used React to build a component-based ui and make the website interractive.
-- [![Shadcn][Shadcn-ui]][Shadcn-url]<br/> -Used Shadcn for it's modern and sleek ui components.
-- [![Tailwind][Tailwind-CSS]][Tailwind-url]<br/> -Used Tailwind.CSS to make website responsive and build modern ui.
-- [![Clerk][Clerk.js]][Clerk-url] <br/> -Integrated Clerk for secure user authentication and account management.
-- [![Cloudinary][Cloudinary]][Cloudinary-url] <br/> -Used Cloudinary for hosting the images shared in conversations.
-- [![Convex][Convex.dev]][Convex-url] <br/> -Used Convex as a serverless backend for real-time data updates.
+### 🧩 Frontend
+
+| Technology                                  | Purpose                                                |
+|---------------------------------------------|--------------------------------------------------------|
+| [![React][React.js]][React-url]             | For building interactive and dynamic user interfaces   |
+| [![Next][Next.js]][Next-url]                | For server-side rendering and static site generation   |
+| [![Shadcn][Shadcn-ui]][Shadcn-url]          | For reusable and pre-styled ui components              |
+| [![Tailwind][Tailwind-CSS]][Tailwind-url]   | For utility-first and responsive styling               |
+
+<br />
+
+### 🔧 Backend
+
+#### **Current Stack**
+| Technology                                  | Purpose                                                    |
+|---------------------------------------------|------------------------------------------------------------|
+| [![Clerk][Clerk.js]][Clerk-url]             | For user authentication and account management             |
+| [![Cloudinary][Cloudinary]][Cloudinary-url] | For uploading and hosting of static files                  |
+| [![Convex][Convex.dev]][Convex-url]         | As serverless backend server and real-time updates database|
+
+#### **Previously Used Stack (Now Replaced)**
+| Technology                               | Purpose                                                       |
+|------------------------------------------|---------------------------------------------------------------|
+| [![Mongodb][Mongodb]][Mongodb-url]       | As non-sql database for storing conversations                 |
+| [![Pusher][Pusher]][Pusher-url]          | To push events to the users to create a real time env         |
+| [![NextAuth][NextAuth]][NextAuth-url]    | For user authentication                                       |
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -185,6 +203,10 @@ Don't forget to give the project a star! Thanks again!
 Currently, I have solely worked on this project.
 Be the first one to join me in shaping this project better😊.
 
+<a href="https://github.com/yousuf123456/ChatVibe/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=yousuf123456/ChatVibe" alt="contrib.rocks image" width="50" height="50" />
+</a>
+
 <!-- LICENSE -->
 
 ## License
@@ -198,16 +220,6 @@ Licensed under the MIT License. See `LICENSE.txt` for more information.
 ## Contact
 
 Muhammad Yousuf - [Linkedin](www.linkedin.com/in/muhammad-yousuf-dev) - m.yousuf.developer@gmail.com
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- ACKNOWLEDGMENTS -->
-
-## Acknowledgments
-
-- []()
-- []()
-- []()
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -241,3 +253,9 @@ Muhammad Yousuf - [Linkedin](www.linkedin.com/in/muhammad-yousuf-dev) - m.yousuf
 [Tailwind-url]: https://tailwindcss.com
 [Cloudinary]: https://img.shields.io/badge/Cloudinary-3F5FFF?style=for-the-badge&logo=cloudinary&logoColor=white&logoSize=auto
 [Cloudinary-url]: https://cloudinary.com
+[Pusher]: https://img.shields.io/badge/Pusher-F0F1F6?style=for-the-badge&logo=pusher&logoColor=300D4F&logoSize=auto
+[Pusher-url]: https://pusher.com/
+[NextAuth]: https://img.shields.io/badge/NextAuth-1BB4E6?style=for-the-badge&logoSize=auto
+[NextAuth-url]: https://next-auth.js.org/
+[Mongodb]: https://img.shields.io/badge/Mongodb-00684A?style=for-the-badge&logo=mongodb&logoColor=B1FF05&logoSize=auto
+[Mongodb-url]: https://www.mongodb.com/
