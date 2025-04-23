@@ -213,16 +213,16 @@ Muhammad Yousuf - [Linkedin](www.linkedin.com/in/muhammad-yousuf-dev) - m.yousuf
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/yousuf123456/ChatVibe.svg?style=for-the-badge
 [contributors-url]: https://github.com/yousuf123456/ChatVibe/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/yousuf123456/ChatVibe.svg?style=for-the-badge
 [forks-url]: https://github.com/yousuf123456/ChatVibe/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/yousuf123456/ChatVibe.svg?style=for-the-badge
 [stars-url]: https://github.com/yousuf123456/ChatVibe/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/yousuf123456/ChatVibe.svg?style=for-the-badge
 [issues-url]: https://github.com/yousuf123456/ChatVibe/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
-[license-url]: https://github.com/yousuf123456/ChatVibe/blob/master/LICENSE.txt
+[license-shield]: https://img.shields.io/github/license/yousuf123456/ChatVibe.svg?style=for-the-badge
+[license-url]: https://github.com/yousuf123456/ChatVibe/blob/main/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/muhammad-yousuf-dev/
 [product-screenshot]: images/screenshot.png
