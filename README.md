@@ -234,13 +234,13 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB&logoSize=auto
 [React-url]: https://reactjs.org/
-[Clerk.js]: https://img.shields.io/badge/clerk.js-F7F7F6?style=for-the-badge&logo=clerk&logoColor=6C47FF&logoSize=auto
+[Clerk.js]: https://img.shields.io/badge/clerk.js-262626?style=for-the-badge&logo=clerk&logoColor=6C47FF&logoSize=auto
 [Clerk-url]: https://clerk.com
 [Shadcn-ui]: https://img.shields.io/badge/shadcnui-000000?style=for-the-badge&logo=shadcnui&logoColor=white&logoSize=auto
 [Shadcn-url]: https://ui.shadcn.com
-[Convex.dev]: https://img.shields.io/badge/Convex-F3B01C?style=for-the-badge&logoColor=black&logoSize=auto
+[Convex.dev]: https://img.shields.io/badge/Convex-b45309?style=for-the-badge&logoColor=black&logoSize=auto
 [Convex-url]: https://www.convex.dev
-[Tailwind-CSS]: https://img.shields.io/badge/Tailwind.CSS-D9F5FF?style=for-the-badge&logo=tailwindcss&logoColor=06B6D4&logoSize=auto
+[Tailwind-CSS]: https://img.shields.io/badge/Tailwind.CSS-172554?style=for-the-badge&logo=tailwindcss&logoColor=06B6D4&logoSize=auto
 [Tailwind-url]: https://tailwindcss.com
 [Cloudinary]: https://img.shields.io/badge/Cloudinary-3F5FFF?style=for-the-badge&logo=cloudinary&logoColor=white&logoSize=auto
 [Cloudinary-url]: https://cloudinary.com
