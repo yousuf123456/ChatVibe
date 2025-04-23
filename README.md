@@ -69,6 +69,7 @@
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
+[![Project Name Screen Shot][project-screenshot]](https://example.com)
 
 **ChatVibe** is a real-time chat application designed for seamless communication.
 
@@ -225,7 +226,7 @@ Muhammad Yousuf - [Linkedin](www.linkedin.com/in/muhammad-yousuf-dev) - m.yousuf
 [license-url]: https://github.com/yousuf123456/ChatVibe/blob/main/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/muhammad-yousuf-dev/
-[product-screenshot]: images/screenshot.png
+[project-screenshot]: /public/images/Chat-Vibe-SS.png
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white&logoSize=auto
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB&logoSize=auto
