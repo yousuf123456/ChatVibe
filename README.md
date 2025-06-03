@@ -70,7 +70,7 @@
 ## About The Project
 [![Project Name Screen Shot][project-screenshot]](https://example.com)
 
-Initially when I was learning about web development, I wondered that how chat systems databases are structured, thats where I decided to create **ChatVibe**. It is a real-time chat application designed for seamless communication.
+Initially when I was new into web development, I wondered that how chat systems databases are structured?, what's the flow of data look like? That is where I decided to create **ChatVibe**. It is a real-time chat application designed for seamless communication.
 
 - Users can get started by signing in to the app.
 - Connect with others by searching for their ID or email address.
