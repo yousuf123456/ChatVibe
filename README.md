@@ -21,7 +21,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/yousuf123456/ChatVibe">
-    <img src="/public/images/logo.png" alt="Logo" width="auto" height="60">
+    <img src="/public/images/logo.png" alt="Logo" width="auto" height="50">
   </a>
 
 <h1 align="center">ChatVibe</h1>
@@ -32,7 +32,7 @@
     <a href="https://github.com/yousuf123456/ChatVibe"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/yousuf123456/ChatVibe">View Demo</a>
+    <a href="https://chat-vibe-two.vercel.app/">Live Demo</a>
     &middot;
     <a href="https://github.com/yousuf123456/ChatVibe/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     &middot;
