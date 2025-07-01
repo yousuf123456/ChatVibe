@@ -20,7 +20,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/yousuf123456/ChatVibe">
+  <a href="https://chat-vibe-two.vercel.app/">
     <img src="/public/images/logo.png" alt="Logo" width="auto" height="50">
   </a>
 
@@ -57,7 +57,6 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
@@ -68,7 +67,7 @@
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
-[![Project Name Screen Shot][project-screenshot]](https://example.com)
+[![Project Name Screen Shot][project-screenshot]](https://chat-vibe-two.vercel.app/)
 
 Initially when I was new into web development, I wondered that how chat systems databases are structured?, what's the flow of data look like? That is where I decided to create **ChatVibe**. It is a real-time chat application designed for seamless communication.
 
@@ -159,15 +158,7 @@ This is a list of tools you must have installed in your machine before proceedin
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- USAGE EXAMPLES -->
 
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ROADMAP -->
 
